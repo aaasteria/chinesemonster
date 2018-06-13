@@ -1,0 +1,17 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chm-o: <http://chinesemonster.org/ontology/>
+
+SELECT ?monster ?efficacy
+WHERE{ {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:efficacy ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byEaten ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byDosed ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byReared ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byWorn ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byRiden ?efficacy .}
+       }
