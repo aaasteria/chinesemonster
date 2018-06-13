@@ -1,0 +1,11 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chm-o: <http://chinesemonster.org/ontology/>
+
+SELECT ?monster ?noise ?dietary
+WHERE{ ?monster rdf:Type chm-o:monster .  
+       ?monster chm-o:noiseLike ?noise. 
+       FILTER regex(?noise, "baby", "i" )           
+       OPTIONAL{
+       ?monster chm-o:dietary ?dietary.
+       }
+} ORDER BY ?monster
