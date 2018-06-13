@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chm-o: <http://chinesemonster.org/ontology/>
+
+SELECT ?monster ?goodOmen ?illOmen
+WHERE{ {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:goodOmen ?goodOmen .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:illOmen ?illOmen .}
+       }    
+       
+       
+       
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chm-o: <http://chinesemonster.org/ontology/>
+
+SELECT ?illOmen (COUNT(?illOmen)AS ?illOmenCount) ?goodOmen (COUNT(?goodOmen)AS ?goodOmenCount) 
+WHERE{ {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:illOmen ?illOmen.
+       }
+UNION {?monster rdf:Type chm-o:monster .
+       ?monster chm-o:goodOmen ?goodOmen.}
+} GROUP BY ?illOmen ?goodOmen  
