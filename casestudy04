@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chm-o: <http://chinesemonster.org/ontology/>
+
+SELECT DISTINCT ?monster ?onEar ?onHead ?onBreast ?underfoot ?inHand       
+WHERE{
+     {?monster chm-o:onEar ?onEar.}
+UNION
+     {?monster chm-o:onHead ?onHead.}
+UNION
+     {?monster chm-o:onBreast ?onBreast.}
+UNION
+     {?monster chm-o:underfoot ?underfoot.}
+UNION
+     {?monster chm-o:inHand ?inHand.}
+} ORDER BY ?monster
