@@ -15,3 +15,24 @@ UNION {?monster rdf:Type chm-o:monster .
 UNION {?monster rdf:Type chm-o:monster .       
        ?monster chm-o:byRiden ?efficacy .}
        }
+
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX chm-o: <http://chinesemonster.org/ontology/>
+
+SELECT (COUNT(?efficacy) AS ?count) ?efficacy
+WHERE{ {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:efficacy ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byEaten ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byDosed ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byReared ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byWorn ?efficacy .}
+UNION {?monster rdf:Type chm-o:monster .       
+       ?monster chm-o:byRiden ?efficacy .}
+       } GROUP BY ?efficacy 
+         ORDER BY ?efficacy 
